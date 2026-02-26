@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Bebas+Neue&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Game-show dark theme */
+    --background: 0.12 0.02 265;
+    --foreground: 0.95 0.01 265;
+    --card: 0.16 0.025 265;
+    --card-foreground: 0.95 0.01 265;
+    --popover: 0.18 0.025 265;
+    --popover-foreground: 0.95 0.01 265;
+    --primary: 0.82 0.18 85;
+    --primary-foreground: 0.12 0.02 265;
+    --secondary: 0.22 0.03 265;
+    --secondary-foreground: 0.95 0.01 265;
+    --muted: 0.22 0.03 265;
+    --muted-foreground: 0.55 0.02 265;
+    --accent: 0.55 0.18 200;
+    --accent-foreground: 0.12 0.02 265;
+    --destructive: 0.62 0.22 25;
+    --destructive-foreground: 0.95 0.01 265;
+    --border: 0.28 0.03 265;
+    --input: 0.22 0.03 265;
+    --ring: 0.82 0.18 85;
+
+    --chart-1: 0.82 0.18 85;
+    --chart-2: 0.55 0.18 200;
+    --chart-3: 0.65 0.22 25;
+    --chart-4: 0.62 0.2 145;
+    --chart-5: 0.7 0.2 310;
+
+    --sidebar: 0.14 0.02 265;
+    --sidebar-foreground: 0.95 0.01 265;
+    --sidebar-primary: 0.82 0.18 85;
+    --sidebar-primary-foreground: 0.12 0.02 265;
+    --sidebar-accent: 0.22 0.03 265;
+    --sidebar-accent-foreground: 0.95 0.01 265;
+    --sidebar-border: 0.28 0.03 265;
+    --sidebar-ring: 0.82 0.18 85;
+
+    /* Game-specific color tokens (L C H) for opacity modifier support */
+    --gold: 0.82 0.18 85;
+    --game-bg: 0.12 0.02 265;
+    --game-surface: 0.16 0.025 265;
+    --game-border: 0.28 0.03 265;
+    --game-text: 0.95 0.01 265;
+    --game-muted: 0.55 0.02 265;
+    --player1: 0.65 0.22 200;
+    --player2: 0.65 0.22 310;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Nunito', system-ui, sans-serif;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Nunito', system-ui, sans-serif;
+    font-weight: 900;
+  }
+}
+
+@layer components {
+  .game-card {
+    @apply bg-card text-card-foreground rounded-2xl;
+  }
+
+  .game-input {
+    @apply bg-secondary border-border text-foreground placeholder:text-muted-foreground
+           focus:border-ring focus:ring-1 focus:ring-ring/50 rounded-xl h-11;
+  }
+
+  .game-btn-primary {
+    @apply bg-primary text-primary-foreground font-black rounded-xl
+           hover:opacity-90 active:scale-95 transition-all duration-150
+           disabled:opacity-40 disabled:cursor-not-allowed disabled:active:scale-100;
+  }
+
+  .score-chip {
+    @apply flex items-center gap-1.5 px-3 py-1.5 rounded-full border transition-all duration-200;
+  }
+
+  .score-chip-active {
+    @apply border-gold/50 bg-gold/10 text-foreground;
+  }
+
+  .score-chip-inactive {
+    @apply border-border bg-secondary/50 text-muted-foreground;
+  }
+
+  .score-chip-dot {
+    @apply w-2 h-2 rounded-full;
+  }
+
+  .category-badge {
+    @apply bg-accent/20 text-accent border-accent/30 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full;
+  }
+
+  /* Answer buttons */
+  .answer-btn {
+    @apply flex items-center gap-3 w-full px-4 py-3.5 rounded-xl border
+           font-semibold text-sm transition-all duration-200 cursor-pointer
+           disabled:cursor-not-allowed;
+  }
+
+  .answer-btn-default {
+    @apply bg-secondary border-border text-foreground
+           hover:border-primary/60 hover:bg-primary/10 hover:text-foreground
+           active:scale-[0.98];
+  }
+
+  .answer-btn-correct {
+    @apply bg-green-500/15 border-green-500/50 text-green-300;
+  }
+
+  .answer-btn-wrong {
+    @apply bg-red-500/15 border-red-500/50 text-red-300;
+  }
+
+  .answer-btn-neutral {
+    @apply bg-secondary/50 border-border/50 text-muted-foreground opacity-60;
+  }
+
+  .answer-label {
+    @apply inline-flex items-center justify-center w-7 h-7 rounded-lg
+           bg-primary/20 text-primary font-black text-xs shrink-0;
+  }
+
+  .answer-btn-correct .answer-label {
+    @apply bg-green-500/20 text-green-400;
+  }
+
+  .answer-btn-wrong .answer-label {
+    @apply bg-red-500/20 text-red-400;
+  }
+
+  .answer-btn-neutral .answer-label {
+    @apply bg-muted/20 text-muted-foreground;
+  }
+}

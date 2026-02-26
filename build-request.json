@@ -1,0 +1,132 @@
+{
+  "kind": "build_request",
+  "title": "Two-Player Cooperative Quiz Game (Initial Build)",
+  "projectName": "Quiz Team",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a backend actor that stores a question bank (at least 20 multiple-choice questions with 4 answer options each, across categories like Science, History, Sports, and Entertainment), tracks game sessions with player names, current question index, scores, and game status (waiting, in-progress, finished).",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-3",
+          "msg-6"
+        ],
+        "quotes": [
+          "A two player quiz game to play as a team like quiz planet",
+          "Make the game usable"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend exposes functions to start a new game with two player names",
+        "Backend exposes a function to get the current question for a session",
+        "Backend exposes a function to submit an answer and receive feedback (correct/incorrect) and updated score",
+        "Backend exposes a function to get the current game state (scores, question index, status)",
+        "Backend exposes a function to reset/restart a game session",
+        "At least 20 questions are seeded in the actor's stable state"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Create a lobby screen where two players enter their names before starting the game. Both name fields must be filled before the game can begin. Display a 'Start Game' button that initializes a new session.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3",
+          "msg-6"
+        ],
+        "quotes": [
+          "A two player quiz game to play as a team like quiz planet",
+          "Make the game usable"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Lobby screen renders with two name input fields labeled 'Player 1' and 'Player 2'",
+        "'Start Game' button is disabled until both name fields are non-empty",
+        "Clicking 'Start Game' navigates to the game screen and initializes a session with the entered names"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Create a game screen that displays one question at a time with its four answer choices as clickable buttons. Show the current question number out of total, the category, and both players' current scores. After selecting an answer, highlight correct and incorrect choices, show feedback, and provide a 'Next Question' button to advance.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3",
+          "msg-6"
+        ],
+        "quotes": [
+          "A two player quiz game to play as a team like quiz planet",
+          "Make the game usable"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The current question text and all four answer options are clearly displayed",
+        "Question number (e.g., 'Question 3 of 20') and category are shown",
+        "Both player names and their scores are visible at all times during the game",
+        "After selecting an answer, the correct answer is highlighted green and the wrong selection (if any) highlighted red",
+        "Answer buttons are disabled after a selection is made to prevent re-answering",
+        "'Next Question' button appears after answering and advances to the next question",
+        "Score updates immediately after an answer is submitted"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Create a results screen shown after all questions have been answered. Display both players' final scores, a summary message celebrating the team's performance, and a 'Play Again' button that returns to the lobby.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3",
+          "msg-6"
+        ],
+        "quotes": [
+          "A two player quiz game to play as a team like quiz planet",
+          "Make the game usable"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Results screen renders automatically when the last question is answered",
+        "Both player names and final scores are displayed",
+        "A combined team score or percentage correct is shown",
+        "A contextual message reflects performance (e.g., 'Amazing teamwork!' for high scores)",
+        "'Play Again' button resets the game and navigates back to the lobby"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Apply a vibrant, game-show-inspired visual theme across all screens: bold typography, a rich dark background with colorful accent highlights (e.g., gold, teal, coral), card-style question panels, smooth answer-selection animations, and clear visual hierarchy. The design should feel lively and fun, appropriate for a trivia game.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "Make the game usable"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All screens share a consistent color palette and typography",
+        "Answer buttons have a hover state and a selected/correct/incorrect state with distinct colors",
+        "Scores and player names are prominently styled and easy to read at a glance",
+        "The layout is responsive and usable on both desktop and tablet viewports"
+      ]
+    }
+  ],
+  "constraints": [
+    "All game logic and question data must be stored in the single Motoko backend actor",
+    "Do not use external APIs for questions — seed questions directly in the actor"
+  ],
+  "nonGoals": [
+    "Real-time multiplayer over a network (both players share the same screen/device)",
+    "User authentication or Internet Identity login",
+    "Persistent leaderboards across multiple sessions",
+    "Custom question creation by users"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Colorful game show podium banner with star and sparkle decorations on a dark background, wide horizontal format (quiz-banner.dim_1200x300.png)"
+    ],
+    "edits": []
+  }
+}

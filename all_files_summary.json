@@ -1,0 +1,19 @@
+{
+  "backend/main.mo": "Motoko actor implementing a trivia quiz backend with a hardcoded question bank, per-player game sessions, score tracking, and a high scores leaderboard using Map and List data structures.",
+  "feature_evidence.json": "Feature evidence report mapping implemented features (lobby, game screen, results screen, visual theme) to their corresponding source files, components, and test IDs with confidence ratings.",
+  "frontend-file-summaries.txt": "JSON document containing one-sentence summaries of each frontend source file, serving as a reference for the purpose and content of each module in the frontend.",
+  "frontend/index.css": "Base Tailwind CSS entry point defining OKLCH-based CSS custom properties for light and dark color themes including sidebar, chart, and semantic UI tokens.",
+  "frontend/index.html": "HTML entry point for the React app titled 'Quiz Planet Co-op', mounting the app at the root div and loading the main TypeScript module.",
+  "frontend/src/App.tsx": "Root React component that sets up TanStack Router with three routes (lobby, game, results), applying redirect guards on game and results routes when player name params are missing.",
+  "frontend/src/components/QuizBanner.tsx": "Simple presentational component that renders the quiz banner image with a gold border accent and constrained max height.",
+  "frontend/src/hooks/useActor.ts": "Custom hook that creates and caches an ICP backend actor (anonymous or authenticated) using React Query, invalidating dependent queries whenever the identity changes.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Custom hook and context provider for Internet Identity authentication, exposing login/logout functions, identity state, and login status derived from the DFINITY AuthClient.",
+  "frontend/src/hooks/useQueries.ts": "Collection of React Query hooks wrapping all backend actor calls including starting games, fetching questions, answering questions, retrieving scores, checking game completion, and getting high scores.",
+  "frontend/src/index.css": "Global CSS file that imports Google Fonts and Tailwind directives, defines a dark game-show theme using OKLCH CSS variables, and declares reusable component utility classes for game UI elements like cards, buttons, and answer options.",
+  "frontend/src/main.tsx": "React app entry point that mounts the app with QueryClientProvider for React Query and InternetIdentityProvider for ICP authentication wrapping the root App component.",
+  "frontend/src/pages/GamePage.tsx": "Main game page component that alternates quiz questions between two players, handles answer submission via backend mutations, tracks scores, and navigates to the results page when both players finish.",
+  "frontend/src/pages/LobbyPage.tsx": "Lobby page where two players enter their names to start a cooperative quiz game, calling the startNewGame mutation for each player before navigating to the game route.",
+  "frontend/src/pages/ResultsPage.tsx": "Results page that displays individual and combined team scores after both players finish, shows a performance message based on percentage correct, and renders a high scores leaderboard.",
+  "frontend/tailwind.config.js": "Tailwind CSS configuration that maps all design tokens to OKLCH CSS variables (including game-specific colors like gold, player1, player2), extends fonts with Nunito and Bebas Neue, and registers typography, container-queries, and animate plugins.",
+  "project_state.json": "Defines the project state for 'Quiz Planet Co-op', a two-player cooperative quiz game, including existing frontend features (lobby, game, results screens, visual theme) and a pending backend feature to store a question bank and track game sessions."
+}

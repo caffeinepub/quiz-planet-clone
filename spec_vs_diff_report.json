@@ -1,0 +1,80 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-26T06:15:07.510Z",
+  "summary": "The diff implements most of the requested requirements: a Motoko backend with question bank and session tracking, lobby/game/results frontend screens, and a game-show visual theme. However, the backend architecture appears to track individual player sessions rather than a unified two-player game session, and several specific acceptance criteria are partially or not clearly met. The backend lacks explicit functions for getting unified game state and reset/restart, and uses single-player session semantics. A high-scores leaderboard is implemented despite being listed as a non-goal.",
+  "missing_requirements": [
+    {
+      "id": "REQ-1",
+      "requirement": "Backend exposes a function to get the current game state (scores, question index, status) as a unified session",
+      "reason": "The backend uses per-player sessions with separate getPlayerScore, getQuestion, and isGameFinished functions rather than a unified getGameState function returning scores, question index, and game status together.",
+      "evidence": [
+        "backend/main.mo",
+        "frontend/src/hooks/useQueries.ts"
+      ]
+    },
+    {
+      "id": "REQ-1",
+      "requirement": "Backend exposes a function to reset/restart a game session",
+      "reason": "No resetGame or restartSession function is visible in the backend code or the query hooks. The Play Again flow navigates back to lobby and calls startNewGame again, but no explicit reset/restart backend function is exposed.",
+      "evidence": [
+        "backend/main.mo",
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/pages/ResultsPage.tsx"
+      ]
+    },
+    {
+      "id": "REQ-1",
+      "requirement": "Game sessions track two player names together with a shared current question index and named game status (waiting, in-progress, finished)",
+      "reason": "The backend GameSession type tracks a single playerName, score, currentQuestionIndex, and isFinished boolean per player, not a unified two-player session with shared question index and named status values.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Persistent high scores leaderboard displayed on the Results screen",
+      "reason": "The build request explicitly lists 'Persistent leaderboards across multiple sessions' as a non-goal. The ResultsPage includes a high scores section using useGetHighScores, and the backend implements a highScores list.",
+      "evidence": [
+        "frontend/src/pages/ResultsPage.tsx",
+        "frontend/src/hooks/useQueries.ts",
+        "backend/main.mo"
+      ]
+    },
+    {
+      "description": "Username availability check function (checkUsernameAvailable)",
+      "reason": "No such requirement was requested in the build spec. The useCheckUsernameAvailable hook and corresponding backend function appear to have been added without being requested.",
+      "evidence": [
+        "frontend/src/hooks/useQueries.ts"
+      ]
+    },
+    {
+      "description": "Validation requiring player names to be different from each other",
+      "reason": "The spec only requires both name fields to be non-empty. The LobbyPage adds an extra constraint that player names must differ, which was not specified.",
+      "evidence": [
+        "frontend/src/pages/LobbyPage.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.72,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/QuizBanner.tsx",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/GamePage.tsx",
+    "frontend/src/pages/LobbyPage.tsx",
+    "frontend/src/pages/ResultsPage.tsx",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

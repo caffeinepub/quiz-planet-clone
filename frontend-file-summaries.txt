@@ -1,0 +1,10 @@
+{
+  "frontend/src/App.tsx": "Main app component with TanStack Router setup, defining routes for lobby (/), game (/game), and results (/results) pages with redirect guards for missing player params.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for all backend operations: starting games, fetching questions, getting scores, answering questions, checking game completion, and retrieving high scores.",
+  "frontend/src/pages/LobbyPage.tsx": "Lobby page with two player name inputs, validation (non-empty, different names), start game button that initializes both player sessions via backend, and how-to-play instructions.",
+  "frontend/src/pages/GamePage.tsx": "Game page that alternates turns between two players, displays questions with four answer buttons, highlights correct/incorrect answers after selection, shows live scores, and navigates to results when both players finish.",
+  "frontend/src/pages/ResultsPage.tsx": "Results page showing individual and combined team scores, a performance message based on percentage correct, star rating, top high scores leaderboard, and a Play Again button.",
+  "frontend/src/components/QuizBanner.tsx": "Reusable banner component that displays the quiz-banner generated image with responsive styling and gold border accent.",
+  "frontend/src/index.css": "Global styles with dark game-show OKLCH color theme, Nunito font, and component classes for game UI elements. Adds CSS variable declarations for all game-specific color tokens (`--gold`, `--player1`, `--player2`, etc.) so Tailwind can generate opacity modifier variants.",
+  "frontend/tailwind.config.js": "Extended Tailwind config with all color tokens (including `border`, `input`, `card`, `popover`, `background`, `foreground`, `sidebar.*`) updated to use `oklch(var(--token) / <alpha-value>)` pattern, enabling opacity modifier utilities like `border-border/50` throughout the app."
+}

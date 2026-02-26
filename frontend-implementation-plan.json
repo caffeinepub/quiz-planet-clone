@@ -1,0 +1,118 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Two-Player Cooperative Quiz Game (Initial Build) - Frontend Implementation",
+  "requirements": [
+    {
+      "id": "REQ-2",
+      "summary": "Create a lobby screen where two players enter their names before starting the game",
+      "acceptanceCriteria": [
+        "Lobby screen renders with two name input fields labeled 'Player 1' and 'Player 2'",
+        "'Start Game' button is disabled until both name fields are non-empty",
+        "Clicking 'Start Game' navigates to the game screen and initializes a session with the entered names"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/LobbyPage.tsx",
+          "operation": "create",
+          "description": "Create the lobby page component with two name input fields for Player 1 and Player 2. Include validation that both fields must be non-empty before enabling the 'Start Game' button. On submission, call backend startNewGame for each player and navigate to the game screen. Use shadcn/ui Input and Button components for consistent styling."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add routing for the lobby page as the default route (/). Import and register LobbyPage component. Set up React Router with routes for lobby, game, and results screens."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Create a game screen that displays one question at a time with answer choices, scores, and feedback",
+      "acceptanceCriteria": [
+        "The current question text and all four answer options are clearly displayed",
+        "Question number (e.g., 'Question 3 of 20') and category are shown",
+        "Both player names and their scores are visible at all times during the game",
+        "After selecting an answer, the correct answer is highlighted green and the wrong selection (if any) highlighted red",
+        "Answer buttons are disabled after a selection is made to prevent re-answering",
+        "'Next Question' button appears after answering and advances to the next question",
+        "Score updates immediately after an answer is submitted"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/GamePage.tsx",
+          "operation": "create",
+          "description": "Create the game page component that fetches and displays the current question using backend getQuestion method. Show question text, category, and four answer option buttons. Display both player names and current scores (fetched via getPlayerScore). Handle answer selection by calling backend answerQuestion, then highlight correct (green) and incorrect (red) answers. Disable answer buttons after selection. Show 'Next Question' button after answering to advance. Check backend isGameFinished after each question to determine when to navigate to results. Use shadcn/ui Button and Card components."
+        },
+        {
+          "path": "frontend/src/hooks/useGameState.ts",
+          "operation": "create",
+          "description": "Create a custom hook to manage game state including player names, current question index, scores, and answer feedback. Provide methods to fetch questions, submit answers, update scores, and check game completion status by calling the appropriate backend methods (getQuestion, answerQuestion, getPlayerScore, isGameFinished)."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route registration for /game path pointing to GamePage component. Import GamePage and wire it into the router configuration."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Create a results screen shown after all questions have been answered",
+      "acceptanceCriteria": [
+        "Results screen renders automatically when the last question is answered",
+        "Both player names and final scores are displayed",
+        "A combined team score or percentage correct is shown",
+        "A contextual message reflects performance (e.g., 'Amazing teamwork!' for high scores)",
+        "'Play Again' button resets the game and navigates back to the lobby"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ResultsPage.tsx",
+          "operation": "create",
+          "description": "Create the results page component that displays final scores for both players using backend getPlayerScore. Calculate and show combined team score and percentage correct (assuming 20 questions total). Display a contextual congratulatory message based on performance thresholds. Include a 'Play Again' button that navigates back to the lobby (/). Use shadcn/ui Card and Button components for layout."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route registration for /results path pointing to ResultsPage component. Import ResultsPage and wire it into the router configuration."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Apply a vibrant, game-show-inspired visual theme across all screens",
+      "acceptanceCriteria": [
+        "All screens share a consistent color palette and typography",
+        "Answer buttons have a hover state and a selected/correct/incorrect state with distinct colors",
+        "Scores and player names are prominently styled and easy to read at a glance",
+        "The layout is responsive and usable on both desktop and tablet viewports"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Apply a vibrant game-show theme with a dark background (e.g., dark navy or charcoal), and colorful accent colors (gold, teal, coral). Define CSS custom properties for primary, secondary, and accent colors. Style answer button states including hover, correct (green), and incorrect (red). Use bold, readable typography for headings and scores. Ensure all global styles support the game-show aesthetic with smooth transitions and animations."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend the Tailwind theme with custom colors matching the game-show palette (gold, teal, coral accents on dark background). Add utility classes for answer button states (correct, incorrect, selected). Configure responsive breakpoints to ensure the layout works on desktop and tablet viewports."
+        },
+        {
+          "path": "frontend/src/components/QuizBanner.tsx",
+          "operation": "create",
+          "description": "Create a reusable banner component that displays the generated game show podium banner image. Reference the exact workspace path 'frontend/public/assets/generated/quiz-banner.dim_1200x300.png' as a static asset. Use this banner at the top of the lobby and results pages to reinforce the game-show theme. Ensure the image is responsive and scales appropriately."
+        },
+        {
+          "path": "frontend/src/pages/LobbyPage.tsx",
+          "operation": "modify",
+          "description": "Import and render the QuizBanner component at the top of the lobby page to display the generated banner image. Apply game-show themed styling with card-style panels and vibrant colors consistent with the global theme."
+        },
+        {
+          "path": "frontend/src/pages/ResultsPage.tsx",
+          "operation": "modify",
+          "description": "Import and render the QuizBanner component at the top of the results page. Apply game-show themed styling to scores and messages using the global color palette and bold typography."
+        }
+      ]
+    }
+  ]
+}

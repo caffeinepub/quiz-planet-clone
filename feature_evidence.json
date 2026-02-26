@@ -1,0 +1,88 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-lobby-screen-where-two-players-enter-their-names-before-starting-the-game-both-name-fields-must-be-filled-before-the-game-can-begin-display-a-start-game-button-that-initializes-a-new-session",
+      "featureTitle": "Create a lobby screen where two players enter their names before starting the game. Both name fields must be filled before the game can begin. Display a 'Start Game' button that initializes a new session.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/LobbyPage.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-game-screen-that-displays-one-question-at-a-time-with-its-four-answer-choices-as-clickable-buttons-show-the-current-question-number-out-of-total-the-category-and-both-players-current-scores-after-selecting-an-answer-highlight-correct-and-incorrect-choices-show-feedback-and-provide-a-next-question-button-to-advance",
+      "featureTitle": "Create a game screen that displays one question at a time with its four answer choices as clickable buttons. Show the current question number out of total, the category, and both players' current scores. After selecting an answer, highlight correct and incorrect choices, show feedback, and provide a 'Next Question' button to advance.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/GamePage.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-results-screen-shown-after-all-questions-have-been-answered-display-both-players-final-scores-a-summary-message-celebrating-the-team-s-performance-and-a-play-again-button-that-returns-to-the-lobby",
+      "featureTitle": "Create a results screen shown after all questions have been answered. Display both players' final scores, a summary message celebrating the team's performance, and a 'Play Again' button that returns to the lobby.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/ResultsPage.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-a-vibrant-game-show-inspired-visual-theme-across-all-screens-bold-typography-a-rich-dark-background-with-colorful-accent-highlights-e-g-gold-teal-coral-card-style-question-panels-smooth-answer-selection-animations-and-clear-visual-hierarchy-the-design-should-feel-lively-and-fun-appropriate-for-a-trivia-game",
+      "featureTitle": "Apply a vibrant, game-show-inspired visual theme across all screens: bold typography, a rich dark background with colorful accent highlights (e.g., gold, teal, coral), card-style question panels, smooth answer-selection animations, and clear visual hierarchy. The design should feel lively and fun, appropriate for a trivia game.",
+      "files": [
+        "frontend/src/components/QuizBanner.tsx",
+        "frontend/src/index.css",
+        "frontend/src/pages/LobbyPage.tsx",
+        "frontend/src/pages/ResultsPage.tsx",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
